@@ -58,7 +58,7 @@ app.delete('/todos/:id', (req, res) => {
 		return res.status(404).send();
 	}
 
-	Todo.findByIdAndRemove(id).then((todo) => {
+	Todo.findByIdAndDelete(id).then((todo) => {
 		if (!todo) {
 			return res.status(404).send();
 		}
@@ -67,7 +67,8 @@ app.delete('/todos/:id', (req, res) => {
 
 	}).catch((e) => {
 		res.status(400).send();
-	})
+	});
+
 });
 
 app.listen(port, () => {
